@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+      {% include "default/groups.html.twig" %}
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#group">Группа</a></li>
+        <li><a data-toggle="tab" href="#ticket">Проездные</a></li>
+        <li><a data-toggle="tab" href="#practice">Практика</a></li>
+        
+      </ul>
+
+      <div class="tab-content">
+        <div id="group" class="tab-pane fade in active">
+          <h3>Группа</h3>
+          {% block group %}Сведения о группе{% endblock %}
+        </div>
+        <div id="ticket" class="tab-pane fade">
+          <h3>Проездные</h3>
+          {% block ticket %}Проездные билеты{% endblock%}
+        </div>
+        <div id="practice" class="tab-pane fade">
+          <h3>Практика</h3>
+           {% block practice %}Практика{% endblock%}
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('/js/index.js') }}" type="text/javascript"></script>
+{% endblock %}

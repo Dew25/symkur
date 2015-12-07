@@ -1,0 +1,77 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Address
+ *
+ * @ORM\Table(name="address", indexes={@ORM\Index(name="city_id", columns={"city_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="region_id", columns={"region_id"})})
+ * @ORM\Entity
+ */
+class Address
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="street", type="string", length=40, nullable=false)
+     */
+    private $street;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="house", type="string", length=5, nullable=false)
+     */
+    private $house;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="room", type="string", length=5, nullable=false)
+     */
+    private $room;
+
+    /**
+     * @var \Countriy
+     *
+     * @ORM\ManyToOne(targetEntity="Countriy")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     * })
+     */
+    private $country;
+
+    /**
+     * @var \Region
+     *
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     * })
+     */
+    private $region;
+
+    /**
+     * @var \City
+     *
+     * @ORM\ManyToOne(targetEntity="City")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     * })
+     */
+    private $city;
+
+
+}
+

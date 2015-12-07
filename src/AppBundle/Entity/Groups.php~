@@ -1,0 +1,78 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Groups
+ *
+ * @ORM\Table(name="groups", indexes={@ORM\Index(name="groupname", columns={"groupname"}), @ORM\Index(name="base", columns={"base"})})
+ * @ORM\Entity
+ */
+class Groups
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=20, nullable=false)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="groupname", type="string", length=40, nullable=false)
+     */
+    private $groupname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="begin_year", type="integer", nullable=false)
+     */
+    private $beginYear;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="end_year", type="integer", nullable=false)
+     */
+    private $endYear;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="begin_month", type="integer", nullable=false)
+     */
+    private $beginMonth;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="end_month", type="integer", nullable=false)
+     */
+    private $endMonth;
+
+    /**
+     * @var \Base
+     *
+     * @ORM\ManyToOne(targetEntity="Base")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="base", referencedColumnName="id")
+     * })
+     */
+    private $base;
+
+
+}
+

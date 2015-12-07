@@ -1,0 +1,66 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PhoneOwner
+ *
+ * @ORM\Table(name="phone_owner", indexes={@ORM\Index(name="parents_id", columns={"parents_id"}), @ORM\Index(name="teacher_id", columns={"teacher_id"}), @ORM\Index(name="student_id", columns={"student_id"}), @ORM\Index(name="phone_id", columns={"phone_id"})})
+ * @ORM\Entity
+ */
+class PhoneOwner
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Teacher
+     *
+     * @ORM\ManyToOne(targetEntity="Teacher")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
+     * })
+     */
+    private $teacher;
+
+    /**
+     * @var \Parents
+     *
+     * @ORM\ManyToOne(targetEntity="Parents")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="parents_id", referencedColumnName="id")
+     * })
+     */
+    private $parents;
+
+    /**
+     * @var \Students
+     *
+     * @ORM\ManyToOne(targetEntity="Students")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="student_id", referencedColumnName="id")
+     * })
+     */
+    private $student;
+
+    /**
+     * @var \Phone
+     *
+     * @ORM\ManyToOne(targetEntity="Phone")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="phone_id", referencedColumnName="id")
+     * })
+     */
+    private $phone;
+
+
+}
+

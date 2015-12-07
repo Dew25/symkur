@@ -1,0 +1,14 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header navbar-brand">
+      Куратор:
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+     	{% for gr in groups %}
+                <li {% if loop.index==1 %}class="active" {% set group=gr%}{% endif %}><a href="/group/{{ gr.id }}">{{ gr.code }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</nav>
